@@ -11,36 +11,18 @@
 |
 */
 
-Route::get('/', function () {
-    return view('pages.index');
-});
+Route::get('/', 'PagesController@index')->name('index');
 
-Route::get('/about', function () {
-    return view('pages.about');
-});
+Route::get('/about', 'PagesController@about')->name('about');
 
-Route::get('/contact', function () {
-    return view('pages.contact');
-});
+Route::get('/contact', 'PagesController@contact')->name('contact');
+Route::post('/contact', 'PagesController@store')->name('contact.store');
+Route::get('/thanks/{name}', 'PagesController@thanks')->name('thanks');
 
-Route::post('/contact', function () {
-    $data = request()->all();
-    echo "Email: " . $data['email'] . '<br>';
-    echo "Body: " . $data['body'];
-});
+Route::get('/signin', 'PagesController@signin')->name('signin');
 
-Route::get('/signin', function () {
-    return view('pages.signin');
-});
+Route::get('/signup', 'PagesController@signup')->name('signup');
 
-Route::get('/signup', function () {
-    return view('pages.signup');
-});
+Route::get('/viewmessages', 'PagesController@viewmessages')->name('viewmessages');
 
-Route::get('/viewmessages', function () {
-    return view('pages.viewmessages');
-});
-
-Route::get('/logout', function () {
-    return view('pages.logout');
-});
+Route::get('/logout', 'PagesController@logout')->name('logout');
